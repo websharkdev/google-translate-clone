@@ -1,2 +1,4 @@
 import { ReactComponent as Logo } from "./logo.svg";
-export { Logo };
+import { HomeBG } from "./BG";
+
+export { Logo, HomeBG };

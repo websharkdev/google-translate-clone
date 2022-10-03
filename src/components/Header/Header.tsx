@@ -1,7 +1,8 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Stack, styled, Box, Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../../assets";
+import { data } from "../../utils/data";
 
 type Props = {};
 
@@ -36,27 +37,6 @@ const Root = styled(Stack)(({ theme }) => ({
     },
   },
 }));
-
-const data = {
-  logoName: "Webshark.Translate",
-  menu: [
-    {
-      id: 0,
-      name: "Home",
-      href: "/",
-    },
-    {
-      id: 1,
-      name: "Translate",
-      href: "/translate",
-    },
-    {
-      id: 2,
-      name: "Synonyms",
-      href: "/synonyms",
-    },
-  ],
-};
 
 export const Header: FC<Props> = (props) => {
   let location = useLocation();
