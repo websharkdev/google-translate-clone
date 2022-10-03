@@ -1,4 +1,5 @@
+import { TranslateBody } from "./TranslateBody";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
-export { Footer, Header };
+export { Footer, Header, TranslateBody };

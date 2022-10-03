@@ -1,7 +1,12 @@
 import { FC } from "react";
+import { TranslateBody } from "../../components";
 
 type Props = {};
 
 export const Translate: FC<Props> = (props) => {
-  return <div>Translate</div>;
+  return (
+    <div>
+      <TranslateBody />
+    </div>
+  );
 };

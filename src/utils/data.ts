@@ -32,4 +32,32 @@ export const data = {
       className: "button-secondary",
     },
   ],
+
+  translate_languages: [
+    {
+      id: 0,
+      name: "Ukrainian",
+      code: "uk",
+    },
+    {
+      id: 1,
+      name: "Orks",
+      code: "ru",
+    },
+    {
+      id: 2,
+      name: "English",
+      code: "en",
+    },
+    {
+      id: 3,
+      name: "Español",
+      code: "es",
+    },
+    {
+      id: 4,
+      name: "Polska",
+      code: "pl",
+    },
+  ],
 };
