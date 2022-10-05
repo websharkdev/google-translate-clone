@@ -49,14 +49,13 @@ export const TranslateBody: FC<Props> = (props) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(
-      originalText !== "" &&
-        window.localStorage.getItem("original_text") !== originalText
+      originalText !== "" && window.localStorage.getItem("original_text")
         ? handleTranslate
         : () => console.log("Glory to Ukraine 💙💛"),
       1500
     );
     return () => clearTimeout(timeoutId);
-  }, [originalText]);
+  }, [originalText, language]);
 
   const handleSwitchLanguages = () => {
     setLanguage({ input: language.output, output: language.input });
