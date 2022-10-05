@@ -22,8 +22,12 @@ const Root = styled(Box)(({ theme }) => ({
 }));
 
 export const TranslateBody: FC<Props> = (props) => {
-  const [originalText, setOriginalText] = useState("");
-  const [translatedText, setTranslatedText] = useState("");
+  const [originalText, setOriginalText] = useState(
+    window.localStorage.getItem("original_text") || ""
+  );
+  const [translatedText, setTranslatedText] = useState(
+    window.localStorage.getItem("translated_text") || ""
+  );
 
   const [language, setLanguage] = useState({
     input: "uk",
@@ -33,12 +37,20 @@ export const TranslateBody: FC<Props> = (props) => {
   const handleTranslate = () => {
     fetchData(
       `https://translated-mymemory---translation-memory.p.rapidapi.com/api/get?langpair=${language.input}|${language.output}&q=${originalText}`
-    ).then((res) => setTranslatedText(res.responseData.translatedText));
+    ).then((res) => {
+      setTranslatedText(res.responseData.translatedText);
+
+      window.localStorage.setItem(
+        "translated_text",
+        res.responseData.translatedText
+      );
+    });
   };
 
   useEffect(() => {
     const timeoutId = setTimeout(
-      originalText !== ""
+      originalText !== "" &&
+        window.localStorage.getItem("original_text") !== originalText
         ? handleTranslate
         : () => console.log("Glory to Ukraine 💙💛"),
       1500
@@ -117,7 +129,10 @@ export const TranslateBody: FC<Props> = (props) => {
             maxRows={12}
             placeholder="Input text to translate"
             helperText={`${originalText.length}/5000`}
-            onChange={(e) => setOriginalText(e.target.value)}
+            onChange={(e) => {
+              setOriginalText(e.target.value);
+              window.localStorage.setItem("original_text", e.target.value);
+            }}
             value={originalText}
           />
         </Grid>
