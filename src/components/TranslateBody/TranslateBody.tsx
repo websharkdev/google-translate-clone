@@ -22,9 +22,7 @@ const Root = styled(Box)(({ theme }) => ({
 }));
 
 export const TranslateBody: FC<Props> = (props) => {
-  const [originalText, setOriginalText] = useState(
-    window.localStorage.getItem("original_text") || ""
-  );
+  const [originalText, setOriginalText] = useState("");
   const [translatedText, setTranslatedText] = useState(
     window.localStorage.getItem("translated_text") || ""
   );
@@ -49,7 +47,7 @@ export const TranslateBody: FC<Props> = (props) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(
-      originalText !== "" && window.localStorage.getItem("original_text")
+      originalText !== ""
         ? handleTranslate
         : () => console.log("Glory to Ukraine 💙💛"),
       1500
@@ -126,7 +124,10 @@ export const TranslateBody: FC<Props> = (props) => {
             minRows={6}
             fullWidth
             maxRows={12}
-            placeholder="Input text to translate"
+            placeholder={
+              window.localStorage.getItem("original_text") ||
+              "Input text to translate"
+            }
             helperText={`${originalText.length}/5000`}
             onChange={(e) => {
               setOriginalText(e.target.value);
